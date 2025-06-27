@@ -9,7 +9,7 @@ Arvix is my first home-made PC configuration, including OS installation, GUI per
 Arvix est un assistant vocal intelligent conçu pour fonctionner sous Linux (Ubuntu \+ Hyprland).    
 Il peut exécuter des commandes système, lancer des applications, changer de mode (travail, gaming, etc.), et dispose d'une interface graphique personnalisée.
 
-\---
+-
 
 \#\# 🎯 Objectifs du projet
 
@@ -20,7 +20,7 @@ Il peut exécuter des commandes système, lancer des applications, changer de mo
 \- Interface graphique stylée  
 \- Modularité (modes, actions, extensions)
 
-\---
+-
 
 \#\# ⚙️ Technologies prévues
 
@@ -30,7 +30,7 @@ Il peut exécuter des commandes système, lancer des applications, changer de mo
 \- GitHub (versionning)  
 \- Optional: TTS, STT, AI API (OpenAI, Vosk, etc.)
 
-\---
+-
 
 \#\# 🙂 Réalisation
 
