@@ -25,7 +25,7 @@ Voici mon paramétrage:
 Il faut ensuite redémarrer sur la clé bootable.  
 (Windows 10)  Paramètres>Mise à jour et securité>Récupération>Redémarrage Avancé>Utiliser un Périphérique>USB Device>Install Ubuntu
 
-# Tutos détaillés:  
+## Tutos détaillés:
 Voici 2 tutos qui détaillent l’installation de Linux en Dual Boot:  
 [Le crabe info](https://lecrabeinfo.net/tutoriels/installer-ubuntu-24-04-lts-en-dual-boot-avec-windows/)  
 [IT-Connect](https://www.it-connect.fr/tuto-dual-boot-windows-et-linux-ubuntu-installation-sur-pc/)
@@ -36,7 +36,7 @@ Voici 2 tutos qui détaillent l’installation de Linux en Dual Boot:
 - [ ] Mettre à jour le système  
 Il vaut mieux mettre à jour le système si des mises à jour sont proposées. ( Personnellement je désactive les mises à jour automatiques pour éviter des changements qui pourraient casser ma configuration).
 
-\#\#  Étape 2 : Installer Hyprland  
+##  Étape 2 : Installer Hyprland  
 - [ ] Installer les dépendances  
 - [ ] Compiler ou installer Hyprland  
 - [ ] Configurer hyprland.conf 
