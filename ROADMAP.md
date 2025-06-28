@@ -47,10 +47,17 @@ Voici 2 tutos qui détaillent l’installation de Linux en Dual Boot:
 Il vaut mieux mettre à jour le système si des mises à jour sont proposées. ( Personnellement je désactive les mises à jour automatiques pour éviter des changements qui pourraient casser ma configuration).
 
 > [!NOTE]  
-> L'installation peut prendre longtemps selon les cas (+ de 15 min pour moi)
+> 🍿 L'installation peut prendre longtemps selon les PC (+ de 20 min pour moi). Si vous êtes connecté à Internet beaucoup de paquets peuvent être installé à ce moment-là.
+
+## Étape 2 : Installer les Applications et Utilitaires.
+
+- [ ] Installer toutes les applications de votre choix.
+
+Beaucoup d'apps sont disponibles sur le store "App Center" , mais vous pouvez aussi les télécharger depuis Internet.
+Pour une utilisation quotidienne de mon PC j'installe donc toutes mes applications favorites : Discord, Spotify, Steam, Libre Office, Firefox, Chrommonium, Visual Studio Code, PyCharm, Bitcoin, Gimp, VLC, Unreal ...
 
 
-##  Étape 2 : Installer Hyprland  
+##  Étape 3 : Installer Hyprland  
 - [ ] Installer les dépendances  
 - [ ] Compiler ou installer Hyprland  
 - [ ] Configurer hyprland.conf 
