@@ -73,11 +73,33 @@
   <img src="img/ubuntu_desktop.png">  
 </p>
 
-##  Étape 3 : Installer Hyprland  
-- [ ] Installer les dépendances  
-- [ ] Compiler ou installer Hyprland  
-- [ ] Configurer hyprland.conf 
-- [ ]  Lancer Hyprland avec Waybar
+
+###  Préparation et utilitaires nécessaires
+
+- [] Installer Git, Curl, Wiget, Zsh
+```shell
+apt update && sudo apt upgrade
+sudo apt install git curl wget zsh
+```
+
+- [] Cloner le répertoire git:
+
+```shell
+git clone https://github.com/Doritos-Man/Arvix
+```
+
+
+##  Étape 3 : Hyprland  
+
+ Il est recommender de lire la documentation d'Hyprland sur le [site officiel](https://wiki.hypr.land/Getting-Started/Installation/) pour comprendre et maitriser votre configuration.
+
+Il est possible d'utiliser les paquets ubuntu d'hyperland `sudo apt-get install -y hyprland`ou d'utiliser des scripts disponibles sur github pour compiler Hyprland et les dependances:
+
+```shell
+git clone https://github.com/adi1090x/hyprland-ubuntu
+cd hyprland-ubuntu
+chmod +x install.sh
+./install.sh
+```
 
 ...
-
