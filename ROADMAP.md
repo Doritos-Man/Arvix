@@ -76,13 +76,13 @@
 
 ###  Préparation et utilitaires nécessaires
 
-- [] Installer Git, Curl, Wiget, Zsh
+- [ ] Installer Git, Curl, Wiget, Zsh
 ```shell
 apt update && sudo apt upgrade
 sudo apt install git curl wget zsh
 ```
 
-- [] Cloner le répertoire git:
+- [ ] Cloner le répertoire git:
 
 ```shell
 git clone https://github.com/Doritos-Man/Arvix
