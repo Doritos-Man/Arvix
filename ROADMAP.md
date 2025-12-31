@@ -66,7 +66,7 @@
 > La configuration par défaut d'ArviX pourrait ne pas fonctionner si vous n'avez installé les mêmes applications que moi. Il suffira de remplacer les nom des programmes  que vous n'avez pas par un equivalent dans le fichier `arvix.conf`.
 
   Beaucoup d'apps sont disponibles sur le store "App Center" , mais vous pouvez aussi les télécharger depuis Internet.
-  Pour une utilisation quotidienne de mon PC j'installe donc toutes mes applications favorites : Discord, Spotify, Steam, Libre Office, Firefox, Chrommonium, Visual Studio Code, PyCharm, Bitcoin, Gimp, VLC, Unreal ...
+  Pour une utilisation quotidienne de mon PC j'installe donc toutes les applications necessaires : Discord, Spotify, Steam, Libre Office, Firefox, Chrommonium, Visual Studio Code, PyCharm, Bitcoin, Gimp, VLC, Unreal ...
 
   Voilà le systeme est prêt : 
 <p align="center">  
