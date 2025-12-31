@@ -93,13 +93,14 @@ git clone https://github.com/Doritos-Man/Arvix
 
  Il est recommender de lire la documentation d'Hyprland sur le [site officiel](https://wiki.hypr.land/Getting-Started/Installation/) pour comprendre et maitriser votre configuration.
 
-Il est possible d'utiliser les paquets ubuntu d'hyperland `sudo apt-get install -y hyprland`ou d'utiliser des scripts disponibles sur github pour compiler Hyprland et les dependances:
+Il est possible d'utiliser plusieur paquets ubuntu d'hyperland `sudo apt-get install -y hyprland`ou d'utiliser des scripts disponibles sur github pour compiler Hyprland et les dependances. J'utilise les  scripts de [JaKooLit](https://github.com/JaKooLit/Ubuntu-Hyprland) qui contient plein d'outils, et propse des configurations d'Hyprland deja prètes.
 
+Pour notre version (24.04):
 ```shell
-git clone https://github.com/adi1090x/hyprland-ubuntu
-cd hyprland-ubuntu
+git clone -b 24.04 --depth=1  https://github.com/JaKooLit/Ubuntu-Hyprland.git ~/Ubuntu-Hyprland-24.04
+cd ~/Ubuntu-Hyprland-24.04
 chmod +x install.sh
 ./install.sh
 ```
-
+Au lancement du script vous couvez choisir quels composants installer, l'installation peut prendre plus de 10 minutes.
 ...
