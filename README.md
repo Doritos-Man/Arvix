@@ -40,7 +40,7 @@ Je mets à dispositions mon code et mes configurations personnalisées pour que 
 # 📖 Usage
 
 > [!IMPORTANT]  
-> - Pour utiliser le projet suivez les instructions de [ROADMAP.md](https://github.com/Doritos-Man/Arvix/ROADMAP.md).
+> - Pour utiliser le projet suivez les instructions de [ROADMAP.md]([https://github.com/Doritos-Man/Arvix/ROADMAP.md](https://github.com/Doritos-Man/Arvix/blob/master/ROADMAP.md)).
 > Le projet est encore au stade experimental, Arvix est loin d'être terminé. Seules étapes validées de la feuille de route sont finies.
 
 
