@@ -50,6 +50,7 @@ function launch_visualizer {
 
     if [ -f ./run_visualizer.sh ]; then
         echo "🚀 Lancement visualizer..."
+        cp ~/Arvix/bg-react-sonor/cava.config ~/.config/cava/config
         ./run_visualizer.sh &
     fi
 }
