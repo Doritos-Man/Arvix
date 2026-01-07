@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Cava Visualizer</title>
+<style>
+html, body {
+    margin: 0;
+    height: 100%;
+    background: url("background.png") center / cover no-repeat;
+    overflow: hidden;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let values = [];
+let smooth = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+const ws = new WebSocket("ws://localhost:8765");
+
+// --- Prise en compte du stéréo + smoothing ---
+const SMOOTHING = 0.25; // 0 = pas de lissage, 1 = très lent
+
+ws.onmessage = e => {
+    const raw = e.data.split(";").map(Number);
+
+    // Option 1: prendre seulement le canal gauche
+    const half = Math.floor(raw.length / 2);
+    const leftChannel = raw.slice(0, half);
+
+    // Initialiser smooth si vide
+    if (smooth.length !== leftChannel.length) smooth = [...leftChannel];
+
+    // Appliquer smoothing
+    smooth = smooth.map((v, i) => smooth[i] + (leftChannel[i] - smooth[i]) * SMOOTHING);
+
+    values = [...smooth];
+};
+
+// --- Image sous la courbe ---
+const bgBottom = new Image();
+bgBottom.src = "audiobg.png";
+
+// --- Fonction pour dessiner la courbe (clip) ---
+function drawCurve(points) {
+    if (!points.length) return;
+
+    ctx.beginPath();
+    ctx.moveTo(0, points[0]);
+
+    for (let i = 1; i < points.length; i++) {
+        const x0 = (i - 1) / (points.length - 1) * canvas.width;
+        const y0 = points[i - 1];
+        const x1 = i / (points.length - 1) * canvas.width;
+        const y1 = points[i];
+        const xc = (x0 + x1) / 2;
+        const yc = (y0 + y1) / 2;
+        ctx.quadraticCurveTo(x0, y0, xc, yc);
+    }
+
+    ctx.lineTo(canvas.width, points[points.length - 1]);
+    ctx.lineTo(canvas.width, canvas.height);
+    ctx.lineTo(0, canvas.height);
+    ctx.closePath();
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (!values.length) {
+        requestAnimationFrame(draw);
+        return;
+    }
+
+    // --- Calcul Y logarithmique ---
+    const LOG_SCALE = 0.8;
+    const points = values.map(v => {
+        const norm = v / 100;
+        const logVal = Math.log1p(norm * 9) / Math.log1p(9);
+        return canvas.height - logVal * canvas.height * LOG_SCALE;
+    });
+
+    // --- Dessiner audio.png sous la courbe ---
+    ctx.save();
+    drawCurve(points);
+    ctx.clip();
+    ctx.drawImage(bgBottom, 0, 0, canvas.width, canvas.height);
+    ctx.restore();
+
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>
