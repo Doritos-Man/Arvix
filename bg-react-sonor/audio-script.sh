@@ -84,7 +84,7 @@ trap handle_exit SIGINT SIGTERM #En cas d'interruption
 
 echo "🎵 Demarrage du script de fond d'écran audio-reactif. 🎵"
 cd ~/Arvix/bg-react-sonor || { echo "❌ Répertoire introuvable"; exit 1; }
-echo "🧹 Nettoyage préliminaire.."
+echo "🧹 Nettoyage préliminaire..."
 cleanup
 cleanup_hidamari
 sleep 1
@@ -118,7 +118,7 @@ while true; do
     else
         # Si on n'était pas déjà en train de jouer
         if [ "$LAST_STATE" == "STOPPED" ]; then
-            echo "▶️  Musique détectée, Lancement du processus..."
+            echo "🎵 Musique détectée, Lancement du processus..."
 
             # Arrêt Hidamari
             if [ "$HIDAMARI_RUNNING" = true ]; then
@@ -136,7 +136,7 @@ while true; do
             launch_visualizer
             VISUALIZER_RUNNING=true
 
-            echo "Démarrage de l'affichage dans 6 secondes..."
+            echo "⏳ Démarrage de l'affichage dans 6 secondes..."
             sleep  6 # Temps pour que le serveur HTTP démarre
             
             launch_hidamari

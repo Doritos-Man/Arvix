@@ -14,8 +14,6 @@ async def read_cava():
 
     if not os.path.exists(FIFO):
         os.mkfifo(FIFO)
-
-    print("🎧 Lecture Cava...")
     
     try:
         # On utilise run_in_executor pour ne pas bloquer la loop
@@ -30,7 +28,7 @@ async def read_cava():
         print(f"⚠️ Erreur lecture FIFO: {e}")
 
 async def ws_handler(ws):
-    print("🌐 Client connecté")
+    print("🌐 Client connecté !")
     try:
         while True:
             await ws.send(latest)
@@ -56,12 +54,11 @@ async def main():
 
     # Serveur WebSocket
     async with websockets.serve(ws_handler, "127.0.0.1", 8765, reuse_address=True):
-        print("✅ WebSocket prêt sur ws://localhost:8765")
+        print("🌐 WebSocket prêt sur ws://localhost:8765")
         await stop_event.wait()
 
-    
     cava_task.cancel()
-    print("🧹 Fermeture cava_ws.py.")
+
 
 if __name__ == "__main__":
     asyncio.run(main())

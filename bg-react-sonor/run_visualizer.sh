@@ -12,7 +12,7 @@ fi
 
 # --- Lancer Cava ---
 echo "▶ Lancement Cava..."
-cava &
+cava & > /dev/null 2>&1
 
 # --- Lancer le WebSocket Python ---
 echo "▶ Lancement WebSocket..."
@@ -21,7 +21,7 @@ python3 ~/Arvix/bg-react-sonor/cava_ws.py &
 sleep 1
 
 # --- Lancer le serveur HTTP ---
-echo "▶ Lancement serveur HTTP : http://localhost:$HTTP_PORT"
+echo "▶ Lancement serveur HTTP ..."
 python3 -m http.server "$HTTP_PORT" &
 
 # --- Attente indéfinie pour garder le script actif ---
