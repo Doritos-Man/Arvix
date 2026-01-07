@@ -89,7 +89,11 @@ git clone https://github.com/Doritos-Man/Arvix
 ```
 
 
-##  Étape 3 : Hyprland  
+##  Étape 3 : GUI
+
+>[!WARNING] Il est possible d'utiliser différents environnements graphique et de les personnaliser plus ou moins.
+
+###  Hyprland
 
  Il est recommender de lire la documentation d'Hyprland sur le [site officiel](https://wiki.hypr.land/Getting-Started/Installation/) pour comprendre et maitriser votre configuration.
 
@@ -103,4 +107,80 @@ chmod +x install.sh
 ./install.sh
 ```
 Au lancement du script vous couvez choisir quels composants installer, l'installation peut prendre plus de 10 minutes.
-...
+
+Voici un exemple d'une [configuration](https://github.com/Doritos-Man/Arvix/hyprland.conf) d'Hyprland (raccourcis personnalisés, styles, applis au démarage)
+
+### GNOME
+
+Si vous choisissez de garder l'environnement graphique par défaut d'Ubuntu vous pouvez utiliser des extensions de GNOME. Il est necéssaire d'installer le gestionnaire d'extension:
+```shell
+sudo apt install gnome-shell-extension-manager
+```
+Voilà plusieurs extensions très utiles:
+
+> Open Bar : La meilleur extention de personnalisation pour le look des applications (bordures, couleurs, transparance) et de la barre du haut ou du dock.
+>Vous pouvez les masquer, rendre transparent, changer les couleurs, les arrondis, etc.
+> Il est possible d'inporter directement une [configuration](https://github.com/Doritos-Man/Arvix/hyprland.conf) dans Open Bar
+
+> Add to Desktop : Permet de créer facilement un raccourci sur le bureau pour l'application que vous êtes en train d'utiliser.
+
+> Blur my Shell : Ajoute un effet de flou (blur) esthétique aux éléments de l'interface GNOME (la barre du haut, le menu des applications, l'aperçu des fenêtres) pour un look plus moderne.
+
+> Dash to Dock : Transforme le "Dash" (la barre de lancement cachée dans la vue d'ensemble) en un véritable dock permanent et hautement personnalisable (similaire à celui d'Apple).
+
+> Forge : Un outil de "Tiling". Il range vos fenêtres côte à côte automatiquement pour remplir tout l'écran, comme sur Hyprland.
+
+> Lockscreen Extension : Permet généralement de personnaliser l'apparence de l'écran de verrouillage.
+
+> Media Controls : Affiche les boutons de contrôle de la musique (Lecture, Pause, Suivant/Précédent) directement dans la barre du haut, à côté de l'horloge.
+
+> System Monitor : Affiche des graphiques en temps réel dans la barre du haut pour surveiller l'utilisation du processeur (CPU), de la mémoire (RAM) et du réseau.
+
+## Fond d'ecran Animé
+
+J'ai mis en place un fond d'écran dynamique pour Linux (GNOME) qui réagit en temps réel à la musique. Il ne s'active que lorsque du son est détecté, préservant ainsi les ressources du CPU/GPU lorsqu'il n'est pas nécessaire.Voir [ici](https://github.com/Doritos-Man/Arvix/bg-react-sonor).
+
+>[!NOTE] Le bon fonctionnement de ce programme dépend fortement de vorte configuration personnelle.
+
+### 🛠️ Architecture
+
+Il y a 4 composants principaux :
+
+1.  **Extraction Audio (Cava) :**
+    * Utilisation de [Cava](https://github.com/karlstav/cava) pour capturer le flux audio brut (PulseAudio/PipeWire).
+    * Sortie des données brutes vers un fichier `FIFO` (`/tmp/cava.fifo`) pour une latence minimale.
+
+2.  **Pont WebSocket (Python) :**
+    * Un script Python (`cava_ws.py`) lit le flux FIFO en temps réel.
+    * Il transmet les données normalisées à une interface Web via un serveur WebSocket local (`ws://localhost:8765`).
+
+3.  **Visualisation (HTML/JS) :**
+    * Une page web locale (`index.html`) se connecte au WebSocket.
+    * L'API Canvas dessine les courbes/barres par-dessus une image de fond.
+
+4.  **Affichage (Wallpaper) :**
+    * [Hidamari](https://github.com/jeffshee/hidamari) (Flatpak) pour gérer le rendu en fond d'écran.
+
+
+### 📦 Installation & Prérequis
+
+* **Dépendances :** `python3`, `cava`, `flatpak`, `ffmpeg`.
+* **Librairies Python:** `websockets`, `pygobject`.
+
+```shell
+
+sudo apt install flatpak gnome-software-plugin-flatpak -y
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+flatpak install flathub io.github.jeffshee.Hidamari -y
+
+sudo apt install cava -y
+
+python3 -m venv --system-site-packages visualizer-env
+source visualizer-env/bin/activate
+pip install websockets
+```
+
+### 🎵 Utilisation
+
+Pour lancer le fond d'ecran animé vous lancez  `./Arvix/bg-react-sonor/audio-script` (de préférence en arriere plan) et normalement dès que vous mettez de la musique (ou n'importe quel audio ) votre fond d'ércran s'anime au rythme du son :
