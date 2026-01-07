@@ -3,7 +3,6 @@
 
 # --- Fonctions utilitaires ---
 function cleanup {
-    echo "🛑 Arrêt Visualizer : "
     
     # Tuer le lanceur et le script python
     pkill -f run_visualizer.sh 2>/dev/null
@@ -56,7 +55,7 @@ function launch_visualizer {
 }
 
 function cleanup_hidamari {
-    echo "🛑 Arrêt Hidamari : "
+
     flatpak kill io.github.jeffshee.Hidamari 2>/dev/null
     echo "✅ Hidamari arrêté"
 }
