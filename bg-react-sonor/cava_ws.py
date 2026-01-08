@@ -6,7 +6,7 @@ from websockets.exceptions import ConnectionClosed
 
 FIFO = "/tmp/cava.fifo"
 FPS = 60
-latest = "0;" * 64
+latest = "0;" * 32
 
 async def read_cava():
     global latest
