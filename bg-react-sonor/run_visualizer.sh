@@ -23,7 +23,7 @@ sleep 1
 # --- Lancer le serveur HTTP ---
 echo "▶ Lancement serveur HTTP ..."
 python3 -m http.server "$HTTP_PORT" &
-
+sleep 1
 # --- Attente indéfinie pour garder le script actif ---
 
 wait

@@ -34,12 +34,12 @@ function cleanup {
 function launch_visualizer {
 
     if [ -f ~/visualizer-env/bin/activate ]; then
-        source ~/visualizer-env/bin/activate
+        source ~/.visualizer-env/bin/activate
     else
         echo "❌ Environnement Python non trouvé"
         cd ~
         python3 -m venv visualizer-env
-        source ~/visualizer-env/bin/activate
+        source ~/.visualizer-env/bin/activate
         pip install --upgrade pip
         pip install websockets numpy asyncio
         echo "Environnement Créé ? Veuillez réexécuter le script."
@@ -68,8 +68,8 @@ function launch_hidamari {
 
 function handle_exit {
     echo -e "\n🛑 Interruption détectée ! Arrêt des processus..."
-    cleanup
     cleanup_hidamari
+    cleanup
     exit 0
 }
 
@@ -87,7 +87,7 @@ cd ~/Arvix/bg-react-sonor || { echo "❌ Répertoire introuvable"; exit 1; }
 echo "🧹 Nettoyage préliminaire..."
 cleanup
 cleanup_hidamari
-sleep 1
+sleep 2
 
 # --- Boucle principale ---
 while true; do
