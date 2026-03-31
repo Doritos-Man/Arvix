@@ -22,7 +22,7 @@ function conky_draw_wave()
     
     -- 1. Chargement de l'image (Une seule fois au démarrage)
     if not image_loaded then
-        bg_image = cairo_image_surface_create_from_png("/home/jean/Arvix/bg-react-sonor/audio2bg.png")
+        bg_image = cairo_image_surface_create_from_png("/home/jean/Arvix/bg-react-sonor/audiobg.png")
         if cairo_surface_status(bg_image) == CAIRO_STATUS_SUCCESS then
             img_w = cairo_image_surface_get_width(bg_image)
             img_h = cairo_image_surface_get_height(bg_image)
@@ -64,7 +64,7 @@ function conky_draw_wave()
 
                 cairo_clip(cr)
                 
-                --cairo_scale(cr, w/img_w, h/img_h)
+                cairo_scale(cr, w/img_w, h/img_h)
                 cairo_set_source_surface(cr, bg_image, 0, 0)
                 cairo_paint(cr)
                 
