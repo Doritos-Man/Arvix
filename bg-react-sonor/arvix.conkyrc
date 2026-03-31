@@ -1,0 +1,37 @@
+conky.config = {
+    -- Paramètres fenêtre
+    alignment = 'bottom_middle',
+    background = true,
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_transparent = true,
+    own_window_argb_visual = true,
+    own_window_argb_value = 0,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    
+    -- Dimensions
+
+    minimum_width = 1918,
+    minimum_height = 1078,
+    gap_x = 0,
+    gap_y = 0,
+    
+    -- Bordures
+    draw_borders = false,
+    draw_graph_borders = false,
+    draw_outline = false,
+    draw_shades = false,
+
+    -- Performance anti-clignotement
+    double_buffer = true,
+
+    -- Mise à jour
+    update_interval = 0.03,  -- ~30 FPS
+    cpu_avg_samples = 2,
+    
+    -- Lua
+    lua_load = '~/.config/conky/audio_visualizer.lua',
+    lua_draw_hook_post = 'draw_wave',
+}
+-- Pas de texte du tout
+conky.text = [[]]
