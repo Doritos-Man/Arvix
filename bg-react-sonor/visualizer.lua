@@ -42,7 +42,7 @@ function conky_draw_wave()
             if #values > 3 then
                 local w, h = conky_window.width, conky_window.height
                 local segments = 10
-                local fc = (h * 0.90) / 100
+                local fc = (h * 0.95) / 100
                 local step = w / ((#values - 1) * segments)
                 
                 local y_first = h - values[1] * fc
@@ -64,7 +64,7 @@ function conky_draw_wave()
 
                 cairo_clip(cr)
                 
-                cairo_scale(cr, w/img_w, h/img_h)
+                --cairo_scale(cr, w/img_w, h/img_h)
                 cairo_set_source_surface(cr, bg_image, 0, 0)
                 cairo_paint(cr)
                 

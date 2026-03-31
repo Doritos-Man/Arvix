@@ -10,12 +10,15 @@ if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
     MAIN_PID=$(cat "$PIDFILE")
     kill "$MAIN_PID" 2>/dev/null
     rm -f "$PIDFILE"
+    killall conky
     notify-send "Visualizer" "⛔ Arrêté"
     exit 0
 fi
 
 # Sinon → START
 cd "$WORKDIR" || exit 1
+killall conky
+kill audio-script.sh
 nohup ./audio-script.sh >/dev/null 2>&1 &
 echo $! > "$PIDFILE"
 
