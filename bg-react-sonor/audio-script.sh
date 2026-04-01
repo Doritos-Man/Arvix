@@ -23,6 +23,7 @@ function launch_visualizer {
     echo "🚀 Lancement visualizer"
     [ ! -p "$FIFO_ARVIX" ] && mkfifo "$FIFO_ARVIX"
 
+    cp "$PATH_ARVIX/visualizer.lua" "$HOME/.config/conky/audio_visualizer.lua"
     # 1. On lance Cava avec son propre config SANS copier dans ~/.config
     # On capture son PID ($!)
     cava -p "$PATH_ARVIX/cava.config" & 

@@ -1,6 +1,6 @@
 conky.config = {
     -- Paramètres fenêtre
-    alignment = 'bottom_middle',
+    alignment = 'middle_middle',
     background = true,
     own_window = true,
     own_window_type = 'desktop',
@@ -11,10 +11,11 @@ conky.config = {
     
     -- Dimensions
 
-    minimum_width = 1918,
-    minimum_height = 1078,
-    gap_x = 0,
-    gap_y = 0,
+    minimum_width = 1920,
+    gap_x = -1,
+
+    minimum_height = 1080,
+    gap_y = -1,
     
     -- Bordures
     draw_borders = false,
@@ -26,7 +27,7 @@ conky.config = {
     double_buffer = true,
 
     -- Mise à jour
-    update_interval = 0.03,  -- ~30 FPS
+    update_interval = 0.042,  -- ~24 FPS
     cpu_avg_samples = 2,
     
     -- Lua

@@ -18,7 +18,6 @@ fi
 # Sinon → START
 cd "$WORKDIR" || exit 1
 killall conky
-kill audio-script.sh
 nohup ./audio-script.sh >/dev/null 2>&1 &
 echo $! > "$PIDFILE"
 
