@@ -1,6 +1,6 @@
 conky.config = {
     -- Paramètres fenêtre
-    alignment = 'middle_middle',
+    alignment = 'bottom_middle',
     background = true,
     own_window = true,
     own_window_type = 'desktop',

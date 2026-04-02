@@ -1,9 +1,19 @@
 require 'cairo'
 
+-- Cache des fonctions Cairo fréquemment utilisées
+local cairo_move_to = cairo_move_to
+local cairo_line_to = cairo_line_to
+local cairo_close_path = cairo_close_path
+local cairo_clip = cairo_clip
+local cairo_set_source_surface = cairo_set_source_surface
+local cairo_paint = cairo_paint
+local cairo_save = cairo_save
+local cairo_restore = cairo_restore
+
 local bg_image = nil
 local img_w, img_h = 0, 0
 local image_loaded = false
-
+local insert=table.insert
 -- Interpolation Catmull-Rom
 function catmull_rom(p0, p1, p2, p3, t)
     local t2 = t * t
@@ -37,7 +47,7 @@ function conky_draw_wave()
         if line then
             local values = {}
             for value in string.gmatch(line, '([^;]+)') do
-                table.insert(values, tonumber(value) or 0)
+                insert(values, tonumber(value) or 0)
             end
             
             if #values > 3 and image_loaded then
@@ -75,8 +85,7 @@ function conky_draw_wave()
                 cairo_close_path(cr)
                 cairo_clip(cr)
                 
-
-                --cairo_scale(cr, w / img_w, h / img_h) -- Si image de meme taille que l'ecran
+                cairo_scale(cr, w / img_w, h / img_h) -- Si image de meme taille que l'ecran pas besoin
                 cairo_set_source_surface(cr, bg_image, 0, 0)
                 cairo_paint(cr)
                 
